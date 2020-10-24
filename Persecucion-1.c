@@ -7,6 +7,9 @@ struct movil{
 	coordenadaX_origen = 50;
 	coordenadaY_origen = 50;
 };
+struct destino{
+	int coordenadaX_destino, coordenadaY_destino;
+}
 //
 void *hilo1();
 //Declaración de la funcion del hilo secundario, recibe coordenadas X y Y destino 
@@ -14,15 +17,22 @@ void *hilo2(struct movil *destino);
 
 int main(){
 	
-	//int coordenadaX_destino, coordenadaY_destino;
-	int pasos = 0; //Pasos para llegar al destino
+	int cx, cy;
+
+	//Se pide al usuario las coordenadas del destino (x,y)
+	printf("Coordenada X destino: \n");
+	scanf("%d", &cx );
+	printf("Coordenada Y destino: \n");
+	scanf("%d", &cy);
+	//Creación de la estructura destino
+	struct destino = {cx,cy};
 
 	//Creación Hilo principal
 	pthread_t hilo_principal;
 	pthread_create(&hilo_principal, NULL, &hilo1, NULL);
 	//Creación Hilo secundario
 	pthread_t hilo_secundario;
-	phread_create(&hilo_secundario, NULL, &hilo2, NULL);
+	phread_create(&hilo_secundario, NULL, (void*)hilo2, NULL);
 
 	
 
@@ -39,5 +49,27 @@ void *hilo1(){
 }
 
 void *hilo2(struct movil *destino){
+	int pasos = 0; 
+	struct movil = {50,50}
 	
+	//Bucle para buscar coordenadas
+	while((destino.coordenadaX_destino == movil.coordenadaX_origen) && (destino.coordenadaY_destino != destino.coordenadaY_destino)){
+		//Condicion de coordenada X
+		if (destino.coordenadaX_destino < 50){
+			movil.coordenadaX_origen -= 1;
+			pasos ++;
+		}else{
+			movil.coordenadaX_origen += 1;
+			pasos ++;
+		}
+		//Condicion de coordenada Y
+		if(destino.coordenadaY_destino < 50){
+			movil.coordenadaY_origen -= 1;
+			pasos++;
+		}else{
+			movil.coordenadaY_origen += 1;
+			pasos++;
+		}		
+	}
+
 }
