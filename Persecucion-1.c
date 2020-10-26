@@ -57,27 +57,30 @@ void *hilo2(struct destino *d){
 	struct movil m = {50,50};
 	
 	//Bucle para buscar coordenadas
-	while((d->coordenadaX_destino != m.coordenadaX_origen) && (d->coordenadaY_destino != m.coordenadaY_origen)){
+	while(1){
 		//Condicion de coordenada X
-		if(d->coordenadaX_destino < 50){
+		if(d->coordenadaX_destino < m.coordenadaX_origen){
 			m.coordenadaX_origen -= 1;
-			pasos ++;
-		}else if(d->coordenadaX_destino > 50){
+			pasos ++;	
+		}else if(d->coordenadaX_destino > m.coordenadaX_origen){
 			m.coordenadaX_origen += 1;
 			pasos ++;
 		}
 		//Condicion de coordenada Y
-		if(d->coordenadaY_destino < 50){
+		if(d->coordenadaY_destino < m.coordenadaY_origen){
 			m.coordenadaY_origen -= 1;
-			pasos ++;
-		}else if(d->coordenadaY_destino > 50){
+			pasos ++;	
+		}else if(d->coordenadaY_destino > m.coordenadaY_origen){
 			m.coordenadaY_origen += 1;
 			pasos ++;
-		}		
+		}
+		//Condicion que cierra el while si ambas coordenadas son iguales
+		if((d->coordenadaX_destino == m.coordenadaX_origen) && (d->coordenadaY_destino == m.coordenadaY_origen)){
+			break;
+		}
+		
 	}
+	printf("\nPasos que se requirieron: %d\n", pasos);
 
-
-
-	printf("\n Pasos que se requirieron: %d", pasos);
 
 }
