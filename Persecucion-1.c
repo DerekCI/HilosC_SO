@@ -59,10 +59,10 @@ void *hilo2(struct destino *d){
 	//Bucle para buscar coordenadas
 	while((d->coordenadaX_destino != m.coordenadaX_origen) && (d->coordenadaY_destino != m.coordenadaY_origen)){
 		//Condicion de coordenada X
-		if (d->coordenadaX_destino < 50){
+		if(d->coordenadaX_destino < 50){
 			m.coordenadaX_origen -= 1;
 			pasos ++;
-		}else{
+		}else if(d->coordenadaX_destino > 50){
 			m.coordenadaX_origen += 1;
 			pasos ++;
 		}
@@ -70,11 +70,14 @@ void *hilo2(struct destino *d){
 		if(d->coordenadaY_destino < 50){
 			m.coordenadaY_origen -= 1;
 			pasos ++;
-		}else{
+		}else if(d->coordenadaY_destino > 50){
 			m.coordenadaY_origen += 1;
 			pasos ++;
 		}		
 	}
+
+
+
 	printf("\n Pasos que se requirieron: %d", pasos);
 
 }
