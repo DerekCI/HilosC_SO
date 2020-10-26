@@ -1,5 +1,7 @@
 # HilosC_SO
 
-## Creator: Derek Cortez
+## Creador: Derek Cortez
   
- Universidad Nacional Autonoma de México
+  
+Universidad Nacional Autonoma de México  
+Clase: Sistemas Operativos
