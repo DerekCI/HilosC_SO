@@ -11,7 +11,7 @@ struct destino{
 };
 
 //Declaración de la funcion del hilo secundario, recibe coordenadas X y Y destino 
-void *hilo2(struct movil *destino);
+void *hilo2(struct destino *d);
 
 int main(){
 	//Variables que se utilizarán para crear la coordenada destino
@@ -39,14 +39,14 @@ int main(){
 }
 
 
-void *hilo2(struct movil *destino){
+void *hilo2(struct destino *d){
 	int pasos = 0; 
-	struct movil m = {50,50}
+	struct movil m = {50,50};
 	
 	//Bucle para buscar coordenadas
-	while((destino.coordenadaX_destino != m.coordenadaX_origen) && (destino.coordenadaY_destino != m.coordenadaY_origen)){
+	while((d->coordenadaX_destino != m.coordenadaX_origen) && (d->coordenadaY_destino != m.coordenadaY_origen)){
 		//Condicion de coordenada X
-		if (destino->coordenadaX_destino < 50){
+		if (d->coordenadaX_destino < 50){
 			m.coordenadaX_origen -= 1;
 			pasos ++;
 		}else{
@@ -54,7 +54,7 @@ void *hilo2(struct movil *destino){
 			pasos ++;
 		}
 		//Condicion de coordenada Y
-		if(destino->coordenadaY_destino < 50){
+		if(d->coordenadaY_destino < 50){
 			m.coordenadaY_origen -= 1;
 			pasos++;
 		}else{
