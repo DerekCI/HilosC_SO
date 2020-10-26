@@ -1,5 +1,18 @@
-#include <stdio.h>
-#include <pthread.h>
+/*
+NOMBRE : CORTEZ IBARRA DEREK
+MATERIA: SISTEMAS OPERATIVOS
+FECHA: 25 DE OCTUBRE DEL 2020
+
+PROPOSITO DEL PROGRAMA: 
+Hacer un programa (a) con un hilo secundario (b) que reciba dos parámetros,
+coordenada X y Coordenada Y destino y luego, va a (c) mover progresivamente un "movil" que parte de la coordenada 50,50 
+(de un "tablero" de 100x100) con pasos de +-1 en X así como Y por paso. (d) El hilo principal en el inter, 
+presenta el progreso de la distancia entre el movil y el destino en la consola solo hasta 
+que termine el hilo secundario del movil. (e) Para terminar el programa imprime el número de pasos que se requirieron.
+*/
+//Librerias a utilizar
+#include <stdio.h> //Libreria para E/S
+#include <pthread.h> //Libreria de hilos posix
 
 //Estructura del movl, inicia en (50,50)
 struct movil{
@@ -27,7 +40,7 @@ int main(){
 
 	//Creación Hilo secundario
 	pthread_t hilo_secundario;
-	pthread_create(&hilo_secundario, NULL, (void*)hilo2, NULL);
+	pthread_create(&hilo_secundario, NULL, (void*)hilo2, &d);
 
 	
 
@@ -56,10 +69,10 @@ void *hilo2(struct destino *d){
 		//Condicion de coordenada Y
 		if(d->coordenadaY_destino < 50){
 			m.coordenadaY_origen -= 1;
-			pasos++;
+			pasos ++;
 		}else{
 			m.coordenadaY_origen += 1;
-			pasos++;
+			pasos ++;
 		}		
 	}
 	printf("\n Pasos que se requirieron: %d", pasos);
