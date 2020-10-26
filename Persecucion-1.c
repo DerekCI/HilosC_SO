@@ -10,8 +10,7 @@ struct movil{
 struct destino{
 	int coordenadaX_destino, coordenadaY_destino;
 }
-//
-void *hilo1();
+
 //Declaración de la funcion del hilo secundario, recibe coordenadas X y Y destino 
 void *hilo2(struct movil *destino);
 
@@ -27,17 +26,13 @@ int main(){
 	//Creación de la estructura destino
 	struct destino = {cx,cy};
 
-	//Creación Hilo principal
-	pthread_t hilo_principal;
-	pthread_create(&hilo_principal, NULL, &hilo1, NULL);
 	//Creación Hilo secundario
 	pthread_t hilo_secundario;
 	phread_create(&hilo_secundario, NULL, (void*)hilo2, NULL);
 
 	
 
-	//FInalización de los hilos
-	pthread_join(hilo_principal, NULL);
+	//FInalización de hilo
 	pthread_join(hilo_secundario, NULL); 
 
 	return 0;
